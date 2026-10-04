@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Happy Teachers' Day, Ma'am Almi</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&display=swap"
+    />
+    <style>
+      :root {
+        box-sizing: border-box;
+        padding-top: env(safe-area-inset-top, 0px);
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+        --board: #5c85f3;
+        --chalk: #f6f3e8;
+        --pink: #f4a6b8;
+        --cream: #fff1d6;
+        --berry: #d94f70;
+        --flame: #ffb534;
+      }
+      :root:not([data-theme="light"]) {
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --board: #5c85f3;
+        }
+      }
+      :root[data-theme="dark"] {
+        --board: #5c85f3;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+      }
+      body {
+        background: var(--board);
+        color: var(--chalk);
+        font-family: "Caveat", "Segoe Print", "Comic Sans MS", cursive;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        padding: 1rem;
+        overflow: hidden;
+        text-align: center;
+      }
+      h1 {
+        font-size: clamp(2.4rem, 9vw, 4.6rem);
+        margin: 0;
+        line-height: 1;
+        min-height: 1.1em;
+        letter-spacing: 0.02em;
+      }
+      h1 span {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(0.6em) rotate(-6deg);
+      }
+      h1.show span {
+        animation: pop 0.5s cubic-bezier(0.3, 1.6, 0.5, 1) forwards;
+        animation-delay: calc(var(--i) * 45ms);
+      }
+      @keyframes pop {
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      .sub {
+        margin: 0;
+        font-size: 1.5rem;
+        opacity: 0;
+        transition: opacity 0.6s 0.9s;
+      }
+      .sub.show {
+        opacity: 0.9;
+      }
+      #cake {
+        width: min(320px, 80vw);
+        cursor: pointer;
+        border: 0;
+        background: none;
+        padding: 0;
+      }
+      #cake:focus-visible,
+      .btn:focus-visible {
+        outline: 3px dashed var(--chalk);
+        outline-offset: 6px;
+      }
+      .flame {
+        opacity: 0;
+        transform-origin: center bottom;
+        transform: scale(0.2);
+        transition:
+          opacity 0.3s,
+          transform 0.3s;
+      }
+      .lit .flame {
+        opacity: 1;
+        transform: scale(1);
+        animation: flicker 0.35s infinite alternate;
+      }
+      @keyframes flicker {
+        to {
+          transform: scale(1.12, 0.92) rotate(3deg);
+        }
+      }
+      .btn {
+        font: inherit;
+        font-size: 1.7rem;
+        font-weight: 700;
+        color: var(--board);
+        background: var(--chalk);
+        border: 0;
+        border-radius: 999px;
+        padding: 0.35em 1.3em;
+        cursor: pointer;
+        transition: transform 0.15s;
+      }
+      .btn:hover {
+        transform: scale(1.06);
+      }
+      .btn:active {
+        transform: scale(0.96);
+      }
+      .bit {
+        position: fixed;
+        top: -12px;
+        left: var(--x);
+        width: 10px;
+        height: 14px;
+        background: var(--c);
+        animation: fall var(--d) ease-in forwards;
+        pointer-events: none;
+        z-index: 5;
+      }
+      @keyframes fall {
+        to {
+          transform: translateY(110vh) rotate(var(--r));
+          opacity: 0.9;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .lit .flame,
+        h1.show span,
+        .bit {
+          animation: none;
+        }
+        h1.show span {
+          opacity: 1;
+          transform: none;
+        }
+        .bit {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="msg" aria-live="polite"></h1>
+
+    <button id="cake" aria-label="Cake with candles. Press to celebrate">
+      <svg
+        viewBox="0 0 300 260"
+        xmlns="http://www.w3.org/2000/svg"
+        role="img"
+        aria-hidden="true"
+      >
+        <ellipse cx="150" cy="238" rx="135" ry="14" fill="#f6f3e8" />
+        <rect x="35" y="150" width="230" height="86" rx="14" fill="#f4a6b8" />
+        <rect
+          x="35"
+          y="150"
+          width="230"
+          height="86"
+          rx="14"
+          fill="none"
+          stroke="#fff1d6"
+          stroke-width="4"
+          stroke-dasharray="2 10"
+          stroke-linecap="round"
+          transform="translate(0,52)"
+          opacity=".9"
+        />
+        <rect x="75" y="98" width="150" height="62" rx="12" fill="#fff1d6" />
+        <path
+          d="M75 112 q0 -14 14 -14 h122 q14 0 14 14 v6 q-10 0 -10 10 t-10 -2 t-12 6 t-12 -6 t-12 8 t-12 -8 t-12 6 t-12 -6 t-10 2 q0 -10 -10 -10z"
+          fill="#d94f70"
+        />
+        <circle cx="115" cy="190" r="6" fill="#d94f70" />
+        <circle cx="150" cy="200" r="6" fill="#d94f70" />
+        <circle cx="185" cy="190" r="6" fill="#d94f70" />
+        <g class="candles">
+          <rect x="102" y="62" width="9" height="38" rx="3" fill="#7fc8e8" />
+          <rect x="145.5" y="52" width="9" height="48" rx="3" fill="#f6d34a" />
+          <rect x="189" y="62" width="9" height="38" rx="3" fill="#a5d68a" />
+          <path
+            class="flame"
+            d="M106.5 38 q-8 12 0 22 q8 -10 0 -22z"
+            fill="#ffb534"
+          />
+          <path
+            class="flame"
+            d="M150 28 q-8 12 0 22 q8 -10 0 -22z"
+            fill="#ffb534"
+            style="animation-delay: 0.1s"
+          />
+          <path
+            class="flame"
+            d="M193.5 38 q-8 12 0 22 q8 -10 0 -22z"
+            fill="#ffb534"
+            style="animation-delay: 0.2s"
+          />
+        </g>
+      </svg>
+    </button>
+
+    <p class="sub" id="sub">
+      Thank you for teaching us.<br /><strong>From DIT 2-1</strong>
+    </p>
+    <button class="btn" id="go">Light the candles</button>
+
+    <script>
+      const cake = document.getElementById("cake"),
+        msg = document.getElementById("msg"),
+        sub = document.getElementById("sub"),
+        go = document.getElementById("go"),
+        text = "Happy Teachers' Day, Ma'am Almi!";
+      let lit = false;
+
+      function showMessage() {
+        msg.classList.remove("show");
+        msg.textContent = "";
+        [...text].forEach((ch, i) => {
+          const s = document.createElement("span");
+          s.textContent = ch === " " ? "\u00A0" : ch;
+          s.style.setProperty("--i", i);
+          msg.appendChild(s);
+        });
+        msg.setAttribute("aria-label", text);
+        void msg.offsetWidth; // restart the animation
+        msg.classList.add("show");
+        sub.classList.add("show");
+      }
+
+      function confetti() {
+        const colors = [
+          "#f4a6b8",
+          "#ffb534",
+          "#7fc8e8",
+          "#a5d68a",
+          "#fff1d6",
+          "#d94f70",
+        ];
+        for (let i = 0; i < 60; i++) {
+          const b = document.createElement("i");
+          b.className = "bit";
+          b.style.cssText = `--x:${Math.random() * 100}vw;--c:${colors[i % colors.length]};--d:${1.8 + Math.random() * 1.8}s;--r:${Math.random() * 720 - 360}deg`;
+          document.body.appendChild(b);
+          setTimeout(() => b.remove(), 3800);
+        }
+      }
+
+      function celebrate() {
+        lit = true;
+        cake.classList.add("lit");
+        go.textContent = "Celebrate again";
+        showMessage();
+        confetti();
+      }
+
+      cake.addEventListener("click", celebrate);
+      go.addEventListener("click", celebrate);
+    </script>
+  </body>
+</html>
