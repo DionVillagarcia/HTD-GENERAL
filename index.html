@@ -271,8 +271,45 @@
         }
       }
 
+      let audio;
+      function tone(freq, start, dur, type, vol) {
+        const o = audio.createOscillator(),
+          g = audio.createGain(),
+          t = audio.currentTime + start;
+        o.type = type;
+        o.frequency.value = freq;
+        o.connect(g);
+        g.connect(audio.destination);
+        g.gain.setValueAtTime(0.0001, t);
+        g.gain.exponentialRampToValueAtTime(vol, t + 0.02);
+        g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+        o.start(t);
+        o.stop(t + dur + 0.05);
+      }
+
+      function happySound() {
+        try {
+          audio =
+            audio || new (window.AudioContext || window.webkitAudioContext)();
+          if (audio.state === "suspended") audio.resume();
+          // "Happy birthday to you" — [frequency Hz, start s, length s]
+          const tune = [
+            [392, 0, 0.14],
+            [392, 0.15, 0.14],
+            [440, 0.3, 0.3],
+            [392, 0.6, 0.3],
+            [523.25, 0.9, 0.3],
+            [493.88, 1.2, 0.55],
+          ];
+          tune.forEach(([f, s, d]) => tone(f, s, d, "triangle", 0.22));
+        } catch (e) {
+          /* sound is optional */
+        }
+      }
+
       function celebrate() {
         lit = true;
+        happySound();
         cake.classList.add("lit");
         go.textContent = "Celebrate again";
         showMessage();
